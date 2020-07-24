@@ -41,10 +41,19 @@ unsigned char *convert_with_padding(unsigned char* buffer, size_t count) {
     return out;
 }
 
-int main() {
-    FILE *fptr = fopen("test.txt", "rb");
-    unsigned char *buffer = malloc(3 * sizeof(unsigned char));
+int main(int argc, char const *argv[]) {
+    if (argc == 1) {
+        printf("no input file name!\nexample: base64.out input.txt\n");
+        return 0;
+    }
 
+    FILE *fptr = fopen(argv[1], "rb");
+    if (fptr == NULL) {
+        printf("Cannot open file\n");
+        return 0;
+    }
+
+    unsigned char *buffer = malloc(3 * sizeof(unsigned char));
     size_t count;
     while (count = fread(buffer, sizeof(unsigned char), 3, fptr)) {
         unsigned char *converted = convert_with_padding(buffer, count);

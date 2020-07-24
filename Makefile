@@ -1,5 +1,7 @@
-run: base64
-	@./base64.out
+all: base64
 
 base64:
-	@g++ -o base64.out base64.c
+	@gcc -o base64.out base64.c
+
+clean:
+	@rm base64.out
