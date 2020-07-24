@@ -12,9 +12,9 @@ char single6bit_to_base64(char c){
         return c - 52 + '0';
     }
     if (c == 62) {
-        return '-';
+        return '+';
     }
-    return '_';
+    return '/';
 }
 
 unsigned char *convert3bytes_to_base64(unsigned char* buffer) {
